@@ -19,11 +19,11 @@ namespace Fractals32
 
         private PlasmaFractals f1;
 
-        public RenderOutput()
+        public RenderOutput(double rough, double intense)
         {
             InitializeComponent();
 
-            f1 = new PlasmaFractals();
+            f1 = new PlasmaFractals(rough, intense);
             f1.initialiseData();
             f1.createFractal();
         }
@@ -42,7 +42,7 @@ namespace Fractals32
         private void pic_Paint(object sender, PaintEventArgs pe)
         {
             g = pe.Graphics;
-            pen = new Pen(Color.CadetBlue, 5.0f);
+            pen = new Pen(Color.CadetBlue, 1.0f);
             brush = (SolidBrush)(Brushes.CadetBlue);
             Color col1 = new Color();
 

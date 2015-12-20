@@ -19,11 +19,14 @@ namespace Fractals32
         // Roughness
         private double R_FACTOR = 0.28;
         // Maximum magnitude of change
-        private double HMAX = 255;
+        private double HMAX = 255.0;
 
-        public PlasmaFractals()
+        // Constructor
+        public PlasmaFractals(double rough, double intense)
         {
             rand1 = new Random();
+            R_FACTOR = rough;
+            HMAX = intense;
         }
 
         // Method to initialise the pixel array.

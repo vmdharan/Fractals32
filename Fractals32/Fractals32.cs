@@ -21,7 +21,10 @@ namespace Fractals32
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ro = new RenderOutput();
+            double rough = (double)(roughLimit.Value) / 100.0;
+            double intensity = (double)(intensityLimit.Value);
+
+            ro = new RenderOutput(rough, intensity);
             ro.SetDesktopLocation(100, 100);
             ro.Show();
             ro.Activate();
