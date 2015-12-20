@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -69,6 +71,39 @@ namespace Fractals32
                     g.FillRectangle(brush, i, j, 1, 1);
                 }
             }
+        }
+
+        private void saveBMP_Click(object sender, EventArgs e)
+        {
+            int cr, cg, cb, ca;
+            int z = 0;
+
+            int[] imageData = new int[513 * 513 * 4];
+
+            for (int i = 0; i < f1.width; i++)
+            {
+                for (int j = 0; j < f1.height; j++)
+                {
+                    cr = (f1.data[i, j].getR());
+                    cg = (f1.data[i, j].getG());
+                    cb = (f1.data[i, j].getB());
+                    ca = (f1.data[i, j].getA());
+
+                    imageData[z] = ca;
+                    imageData[z + 1] = cr;
+                    imageData[z + 2] = cg;
+                    imageData[z + 3] = cb;
+                    z += 4;
+                }
+            }
+
+
+            Bitmap bmp = new Bitmap(513, 513, PixelFormat.Format32bppPArgb);
+            Graphics g = Graphics.FromImage(bmp);
+            pic.DrawToBitmap(bmp, pic.Bounds);
+
+            string fPath = "fractals32.bmp";
+            bmp.Save(fPath, ImageFormat.Bmp);
         }
     }
 }
