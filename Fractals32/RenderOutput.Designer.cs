@@ -1,6 +1,6 @@
 ﻿namespace Fractals32
 {
-    partial class Fractals32
+    partial class RenderOutput
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(13, 212);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Render";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Fractals32
+            // RenderOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.button1);
-            this.Name = "Fractals32";
-            this.Text = "Fractals32";
+            this.ClientSize = new System.Drawing.Size(496, 473);
+            this.Name = "RenderOutput";
+            this.Text = "RenderOutput";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
     }
 }
-
