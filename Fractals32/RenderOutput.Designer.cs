@@ -32,11 +32,9 @@
             // 
             // RenderOutput
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 473);
+            this.ClientSize = new System.Drawing.Size(513, 515);
             this.Name = "RenderOutput";
-            this.Text = "RenderOutput";
+            this.Load += new System.EventHandler(this.RenderOutput_Load);
             this.ResumeLayout(false);
 
         }

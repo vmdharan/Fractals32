@@ -16,12 +16,12 @@ namespace Fractals32
 
         public Fractals32()
         {
-            InitializeComponent();
-            ro = new RenderOutput();
+            InitializeComponent(); 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ro = new RenderOutput();
             ro.SetDesktopLocation(100, 100);
             ro.Show();
             ro.Activate();
