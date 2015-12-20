@@ -56,6 +56,7 @@
             this.ClientSize = new System.Drawing.Size(512, 541);
             this.Controls.Add(this.saveBMP);
             this.Controls.Add(this.saveBitmapLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RenderOutput";
             this.Load += new System.EventHandler(this.RenderOutput_Load);
             this.ResumeLayout(false);
