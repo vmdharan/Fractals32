@@ -9,7 +9,6 @@ namespace Fractals32
     // Define the pixel format
     public class Pixel
     {
-
         private int x;          // X position
         private int y;          // Y position
         private int[] col;      // Colour
@@ -33,10 +32,10 @@ namespace Fractals32
             this.y = y;
 
             col = new int[4];
-            col[0] = col[0] = 0x000000FF & a;
-            col[1] = col[1] = 0x000000FF & r;
-            col[2] = col[2] = 0x000000FF & g;
-            col[3] = col[3] = 0x000000FF & b;
+            col[0] = 0x000000FF & a;
+            col[1] = 0x000000FF & r;
+            col[2] = 0x000000FF & g;
+            col[3] = 0x000000FF & b;
         }
 
         // Mutators
