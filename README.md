@@ -1,2 +1,2 @@
-# Fractals32
-Generates fractals
+# PlasmaFractals
+Generates Plasma fractals
