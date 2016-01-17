@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Fractals32
+namespace PlasmaFractals
 {
-    public partial class Fractals32 : Form
+    public partial class Main : Form
     {
         private RenderOutput ro;
 
-        public Fractals32()
+        public Main()
         {
             InitializeComponent(); 
         }

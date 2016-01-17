@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Fractals32
+namespace PlasmaFractals
 {
     public partial class RenderOutput : Form
     {

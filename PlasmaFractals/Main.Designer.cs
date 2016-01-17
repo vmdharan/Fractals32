@@ -1,6 +1,6 @@
-﻿namespace Fractals32
+﻿namespace PlasmaFractals
 {
-    partial class Fractals32
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -83,7 +83,7 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Intensity";
             // 
-            // Fractals32
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,8 +93,8 @@
             this.Controls.Add(this.roughLimit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Name = "Fractals32";
-            this.Text = "Fractals32";
+            this.Name = "Main";
+            this.Text = "PlasmaFractals";
             ((System.ComponentModel.ISupportInitialize)(this.roughLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.intensityLimit)).EndInit();
             this.ResumeLayout(false);

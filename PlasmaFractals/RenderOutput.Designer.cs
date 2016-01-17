@@ -1,4 +1,4 @@
-﻿namespace Fractals32
+﻿namespace PlasmaFractals
 {
     partial class RenderOutput
     {

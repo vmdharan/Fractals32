@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fractals32
+namespace PlasmaFractals
 {
     // Define the pixel format
     public class Pixel
