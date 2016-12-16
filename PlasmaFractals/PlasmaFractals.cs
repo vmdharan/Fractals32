@@ -83,12 +83,12 @@ namespace PlasmaFractals
             BM = calcMid(BL, BR, maxDiff);
 
             // Update and reduce the color range for the next subdivision.
-            if (maxDiff > 1)
+            if (maxDiff > 0.0125)
             {
                 maxDiff = Math.Pow(2, -HMAX);
             }
             else {
-                maxDiff = 1;
+                maxDiff = 0.0125;
             }
 
             // Recursively subdivide each of the four polygons until 
