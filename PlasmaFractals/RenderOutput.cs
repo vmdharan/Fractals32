@@ -36,12 +36,12 @@ namespace PlasmaFractals
             pic.Dock = DockStyle.Fill;
             pic.SetBounds(0, 0, 512, 512);
             pic.BackColor = Color.Black;
-            pic.Paint += new PaintEventHandler(this.pic_Paint);
+            pic.Paint += new PaintEventHandler(this.Pic_Paint);
             pic.Show();
             this.Controls.Add(pic);
         }
 
-        private void pic_Paint(object sender, PaintEventArgs pe)
+        private void Pic_Paint(object sender, PaintEventArgs pe)
         {
             g = pe.Graphics;
             pen = new Pen(Color.CadetBlue, 1.0f);

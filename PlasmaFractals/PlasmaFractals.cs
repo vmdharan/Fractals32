@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace PlasmaFractals
 {
@@ -28,20 +30,19 @@ namespace PlasmaFractals
         // Method to initialise the pixel array.
         public void initialiseData()
         {
-            int i, j;
-
             data = new Pixel[width, height];
-            for (i = 0; i < width; i++)
+
+            Parallel.For(0, width, i =>
             {
-                for (j = 0; j < height; j++)
+                Parallel.For(0, height, j =>
                 {
-                    data[i,j] = new Pixel(i, j, 0x00, 0x00, 0x00, 0x00);
-                }
-            }
+                    data[i, j] = new Pixel(i, j, 0x00, 0x00, 0x00, 0x00);
+                });
+            });
         }
 
         // The entry point for the Plasma Fractal algorithm.
-        public void createFractal()
+        public async Task<bool> createFractal()
         {
             double roughness = R_FACTOR;    // Initial roughness
             double maxDiff = HMAX;          // Initial color intensity
@@ -61,13 +62,15 @@ namespace PlasmaFractals
                     randomColour(maxDiff), randomColour(maxDiff));
 
             // Start the recursive subdivision of the image.
-            subdivide_Poly(TL, TR, BR, BL, maxDiff, roughness);
+            return await subdivide_Poly(TL, TR, BR, BL, maxDiff, roughness);
         }
 
         // Method to recursively subdivide and colour the image.
-        public void subdivide_Poly(Pixel TL, Pixel TR, Pixel BR, Pixel BL,
+        public async Task<bool> subdivide_Poly(Pixel TL, Pixel TR, Pixel BR, Pixel BL,
                 double maxDiff, double rough)
         {
+            bool result = true;
+
             // Initialise the new midpoint pixels.
             Pixel LM = new Pixel();     // Left midpoint
             Pixel RM = new Pixel();     // Right midpoint
@@ -76,11 +79,11 @@ namespace PlasmaFractals
             Pixel M = new Pixel();      // Geometric midpoint
 
             // Obtain the midpoints.
-            M = calcMid2(TL, TR, BR, BL, maxDiff);
-            LM = calcMid(TL, BL, maxDiff);
-            RM = calcMid(TR, BR, maxDiff);
-            TM = calcMid(TL, TR, maxDiff);
-            BM = calcMid(BL, BR, maxDiff);
+            M = await calcMid2(TL, TR, BR, BL, maxDiff); ;
+            LM = await calcMid(TL, BL, maxDiff);
+            RM = await calcMid(TR, BR, maxDiff);
+            TM = await calcMid(TL, TR, maxDiff);
+            BM = await calcMid(BL, BR, maxDiff);
 
             // Update and reduce the color range for the next subdivision.
             if (maxDiff > 0.0125)
@@ -95,21 +98,25 @@ namespace PlasmaFractals
             // the size of each subdivision reaches a single pixel.
             if ((TR.getX() - TL.getX()) >= 2)
             {
-                subdivide_Poly(TL, TM, M, LM, maxDiff, rough);
-                subdivide_Poly(TM, TR, RM, M, maxDiff, rough);
-                subdivide_Poly(LM, M, BM, BL, maxDiff, rough);
-                subdivide_Poly(M, RM, BR, BM, maxDiff, rough);
+                var r1 = await subdivide_Poly(TL, TM, M, LM, maxDiff, rough);
+                var r2 = await subdivide_Poly(TM, TR, RM, M, maxDiff, rough);
+                var r3 = await subdivide_Poly(LM, M, BM, BL, maxDiff, rough);
+                var r4 = await subdivide_Poly(M, RM, BR, BM, maxDiff, rough);
+
+                result = r1 && r2 && r3 && r4;
             }
             else if ((TR.getX() - TL.getX()) < 2)
             {
                 // Add the color intensity to the pixel array.
                 addToPixelArray(TL, TR, BR, BL);
             }
+
+            return result;
         }
 
         // Calculate the midpoint of two pixels and apply a 
         // random colour intensity.
-        public Pixel calcMid(Pixel A, Pixel B, double maxDiff)
+        public async Task<Pixel> calcMid(Pixel A, Pixel B, double maxDiff)
         {
             Pixel Mid = new Pixel();
             Mid.setX((int)(A.getX() + B.getX()) / 2);
@@ -125,7 +132,7 @@ namespace PlasmaFractals
 
         // Calculate the midpoint given four pixels and apply a 
         // randome colour intensity.
-        public Pixel calcMid2(Pixel A, Pixel B, Pixel C, Pixel D, double maxDiff)
+        public async Task<Pixel> calcMid2(Pixel A, Pixel B, Pixel C, Pixel D, double maxDiff)
         {
             Pixel Mid = new Pixel();
             Mid.setX((int)(A.getX() + B.getX() + C.getX() + D.getX()) / 4);
