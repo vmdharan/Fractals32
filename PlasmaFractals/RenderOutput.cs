@@ -20,21 +20,24 @@ namespace PlasmaFractals
         private Brush brush;
 
         private PlasmaFractals f1;
+        private int size;
 
-        public RenderOutput(double rough, double intense)
+        public RenderOutput(double rough, double intense, int iSize)
         {
             InitializeComponent();
 
-            f1 = new PlasmaFractals(rough, intense);
+            size = iSize;
+
+            f1 = new PlasmaFractals(rough, intense, size);
             f1.initialiseData();
-            f1.createFractal();
+            _ = f1.createFractal();
         }
 
         private void RenderOutput_Load(object sender, EventArgs e)
         {
             pic = new PictureBox();
             pic.Dock = DockStyle.Fill;
-            pic.SetBounds(0, 0, 512, 512);
+            pic.SetBounds(0, 0, size, size);
             pic.BackColor = Color.Black;
             pic.Paint += new PaintEventHandler(this.Pic_Paint);
             pic.Show();
@@ -78,7 +81,7 @@ namespace PlasmaFractals
             int cr, cg, cb, ca;
             int z = 0;
 
-            int[] imageData = new int[513 * 513 * 4];
+            int[] imageData = new int[(size+1) * (size+1) * 4];
 
             for (int i = 0; i < f1.width; i++)
             {
@@ -98,7 +101,7 @@ namespace PlasmaFractals
             }
 
 
-            Bitmap bmp = new Bitmap(513, 513, PixelFormat.Format32bppPArgb);
+            Bitmap bmp = new Bitmap((size + 1), (size + 1), PixelFormat.Format32bppPArgb);
             Graphics g = Graphics.FromImage(bmp);
             pic.DrawToBitmap(bmp, pic.Bounds);
 

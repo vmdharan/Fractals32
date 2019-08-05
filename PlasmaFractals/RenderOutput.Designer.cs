@@ -35,15 +35,15 @@
             // saveBitmapLabel
             // 
             this.saveBitmapLabel.AutoSize = true;
-            this.saveBitmapLabel.Location = new System.Drawing.Point(14, 520);
+            this.saveBitmapLabel.Location = new System.Drawing.Point(14, 776);
             this.saveBitmapLabel.Name = "saveBitmapLabel";
-            this.saveBitmapLabel.Size = new System.Drawing.Size(70, 13);
+            this.saveBitmapLabel.Size = new System.Drawing.Size(137, 25);
             this.saveBitmapLabel.TabIndex = 0;
             this.saveBitmapLabel.Text = "Save to BMP";
             // 
             // saveBMP
             // 
-            this.saveBMP.Location = new System.Drawing.Point(90, 515);
+            this.saveBMP.Location = new System.Drawing.Point(90, 771);
             this.saveBMP.Name = "saveBMP";
             this.saveBMP.Size = new System.Drawing.Size(75, 23);
             this.saveBMP.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             // RenderOutput
             // 
-            this.ClientSize = new System.Drawing.Size(512, 541);
+            this.ClientSize = new System.Drawing.Size(768, 797);
             this.Controls.Add(this.saveBMP);
             this.Controls.Add(this.saveBitmapLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

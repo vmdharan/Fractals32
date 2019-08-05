@@ -7,8 +7,8 @@ namespace PlasmaFractals
     public class PlasmaFractals
     {
         // Dimensions
-        public int height = 513;
-        public int width = 513;
+        public int height;
+        public int width;
         // Data
         public Pixel[,] data;
 
@@ -19,12 +19,18 @@ namespace PlasmaFractals
         // Maximum magnitude of change
         private double HMAX = 255.0;
 
+        private int size;
+
         // Constructor
-        public PlasmaFractals(double rough, double intense)
+        public PlasmaFractals(double rough, double intense, int iSize)
         {
             rand1 = new Random();
             R_FACTOR = rough;
             HMAX = intense;
+
+            size = iSize;
+            height = size + 1;
+            width = size + 1;
         }
 
         // Method to initialise the pixel array.
